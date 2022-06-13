@@ -1,6 +1,7 @@
 package com.app.assignment.domain.usecase.auth
 
 data class AuthUseCase(
-    val isUserAuthenticated: IsUserAuthenticated,
-    val storeToken: StoreToken
+    val firebaseLoginUseCase: FirebaseLoginUseCase,
+    val firebaseLogOutUseCase: FirebaseLogOutUseCase,
+    val firebaseGetUserUseCase: FirebaseGetUserUseCase
 )

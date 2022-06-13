@@ -2,8 +2,8 @@ package com.app.assignment.domain.usecase.auth
 
 import com.app.assignment.domain.repository.auth.AuthRepository
 
-class IsUserAuthenticated(
+class FirebaseLogOutUseCase(
     private val repository: AuthRepository
 ) {
-    operator fun invoke() = repository.isUserAuthenticatedInFirebase()
+    suspend operator fun invoke() = repository.logoutFromFirebase()
 }
