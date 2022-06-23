@@ -33,22 +33,10 @@ class AuthViewModel @Inject constructor(
     private val _signInState = mutableStateOf<Response<Boolean>>(Response.Initial)
     val signInState: State<Response<Boolean>> = _signInState
 
-
-    private val _user: MutableStateFlow<User?> = MutableStateFlow(null)
-    val user: StateFlow<User?> = _user
-
-    fun logout() {
-        viewModelScope.launch {
-            useCases.firebaseLogOutUseCase().collect{ result ->
-                _signInState.value = result
-            }
-        }
-
-    }
-
     fun loginToFirebase(idToken: String) {
         viewModelScope.launch {
             useCases.firebaseLoginUseCase(idToken).collect{ result ->
+                delay(1000)
                 _signInState.value = result
             }
         }

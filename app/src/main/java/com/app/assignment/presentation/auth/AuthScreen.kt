@@ -2,6 +2,7 @@ package com.app.assignment.presentation.auth
 
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
@@ -9,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -27,7 +29,7 @@ fun AuthScreen (
     Scaffold(
         content = { padding ->
             Box(
-                modifier = Modifier.fillMaxSize().padding(padding)
+                modifier = Modifier.fillMaxSize().padding(padding).background(Color.White),
             ) {
                 AuthView(null, viewModel)
             }
@@ -41,6 +43,7 @@ fun AuthScreen (
                 navigateToGameScreen()
             }
         }
+        else -> Unit
     }
 }
 

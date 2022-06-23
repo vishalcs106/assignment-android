@@ -29,7 +29,7 @@ fun SignInButton(
     isLoading: Boolean = false,
     shape: Shape = Shapes.medium,
     borderColor: Color = Color.LightGray,
-    backgroundColor: Color = MaterialTheme.colors.surface,
+    backgroundColor: Color = Color.White,
     progressIndicatorColor: Color = MaterialTheme.colors.primary,
     onClick: () -> Unit
 ) {
@@ -66,7 +66,7 @@ fun SignInButton(
             )
             Spacer(modifier = Modifier.width(8.dp))
 
-            Text(text = if (isLoading) loadingText else text)
+            Text(text = if (isLoading) loadingText else text, color = Color.Black)
             if (isLoading) {
                 Spacer(modifier = Modifier.width(16.dp))
                 CircularProgressIndicator(

@@ -3,7 +3,7 @@ package com.app.assignment.domain.model
 sealed class Response<out T> {
     object Loading: Response<Nothing>()
     object Initial: Response<Nothing>()
-
+    object UnAuthorized: Response<Nothing>()
     data class Success<out T>(
         val data: T
     ): Response<T>()
@@ -11,4 +11,6 @@ sealed class Response<out T> {
     data class Error(
         val message: String
     ): Response<Nothing>()
+
+
 }

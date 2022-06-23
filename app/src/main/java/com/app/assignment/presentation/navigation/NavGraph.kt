@@ -14,7 +14,8 @@ import com.google.accompanist.navigation.animation.composable
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraph (
     navController: NavHostController,
-    startDestination: String
+    startDestination: String,
+    onLogout:() -> Unit
 ) {
     AnimatedNavHost(
         navController = navController,
@@ -27,18 +28,18 @@ fun NavGraph (
         ) {
             AuthScreen(
                 navigateToGameScreen = {
-                    navController.navigate(Screen.GamesScreen.route)
+                    navController.navigate(Screen.GamesScreen.route){
+                        popUpTo(Screen.AuthScreen.route) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
         composable(
             route = Screen.GamesScreen.route
         ) {
-            GamesScreen(navigateToAuth = {
-                navController.navigate(Screen.AuthScreen.route){
-                    popUpTo(0)
-                }
-            })
+            GamesScreen(onLogout = onLogout)
         }
     }
 }

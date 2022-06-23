@@ -5,6 +5,7 @@ import com.app.assignment.domain.model.Response
 import com.app.assignment.domain.remotesource.GamesService
 import io.paperdb.Paper
 import kotlinx.coroutines.flow.flow
+import retrofit2.HttpException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -21,8 +22,11 @@ class GameRepositoryImpl
                 emit(Response.Success(gamesList))
             } ?: emit(Response.Error("Something went wrong"))
         }catch (e: Exception){
-            emit(Response.Error(e.message!!))
+            if(e is HttpException && (e as HttpException).code() == 401){
+                emit(Response.UnAuthorized)
+            } else{
+                emit(Response.Error(e.message!!))
+            }
         }
-
     }
 }

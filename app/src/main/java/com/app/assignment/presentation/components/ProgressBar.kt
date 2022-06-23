@@ -6,6 +6,7 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun ProgressBar() {
@@ -13,6 +14,6 @@ fun ProgressBar() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ){
-        CircularProgressIndicator()
+        CircularProgressIndicator(color = Color.Green)
     }
 }

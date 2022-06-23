@@ -16,5 +16,7 @@ data class Game(
     @SerialName("gameForm")
     val gameForm: String = "",
     @SerialName("packageId")
-    val packageId: String = ""
+    val packageId: String = "",
+    @SerialName("isOnPlayStore")
+    val isOnPlayStore: Boolean? = null
 )
